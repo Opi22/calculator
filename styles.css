@@ -1,10 +1,18 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    background-color: rgba(243, 222, 182, 0.918);
+    background-color: #D8B4A0;
 }
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 130px;
+    background-color: #223843;
+    width: 440px;
+    padding: 20px;
 }
