@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    background-color: #EFF1F3;
+    background-color: rgba(243, 222, 182, 0.918);
 }
 body {
     display: flex;
