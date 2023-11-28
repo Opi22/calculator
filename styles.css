@@ -3,3 +3,8 @@
     margin: 0;
     background-color: #EFF1F3;
 }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
