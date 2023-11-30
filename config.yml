@@ -1,0 +1,13 @@
+# _config.yml
+
+# Site settings
+title: calculator Project
+description: A Jekyll site for the Sketch repository
+baseurl: "/calculator" # Change this if your site is hosted in a subdirectory
+
+# Build settings
+markdown: kramdown
+theme: minima # Change this to the name of your preferred Jekyll theme, or remove to use the default theme
+
+# GitHub Pages settings
+repository: Opi22/calculator # Replace 'yourusername' with your GitHub username
