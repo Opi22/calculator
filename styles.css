@@ -19,15 +19,17 @@ body {
     padding: 20px;
     box-shadow: 15px 15px 3px rgba(0, 0, 0, 0.1);
 }
-#answer{
+.answer{
     height: 150px;
     border-radius: 15px;
     background-color: #D77A61;
+    overflow: auto;
 }
 .box{
     display: flex;
     flex-direction: row;
     gap: 15px;
+    overflow-wrap: break-word;
     background-color: #223843;
 }
 button{
@@ -48,4 +50,13 @@ button{
 }
 #add, #subtract, #division,#evaluate,#multibly{
     color:#D77A61;
+}
+#result, #problem{
+    display: flex;
+    justify-content: flex-end;
+    overflow-wrap: break-word;
+    margin: 20px;
+    background-color: #D77A61;
+    color: lightgreen;
+    border-radius: 20px;
 }
