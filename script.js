@@ -66,6 +66,7 @@ btn0.addEventListener("click", zero);
 let Ac = document.getElementById("btnAc");
 function Clear (){
     problem.textContent="";
+    answer.textContent="";
 }
 Ac.addEventListener("click", Clear);
 
@@ -77,3 +78,96 @@ function Delete (){
 del.addEventListener("click", Delete);
 
 // last section_________ I hope:___________________
+
+let add =document.getElementById("add");
+function addition(){
+    problem.textContent+="+";
+};
+add.addEventListener("click", addition);
+
+
+let subtract = document.getElementById("subtract");
+function subtarction(){
+    problem.textContent+="-";
+}
+subtract.addEventListener("click", subtarction);
+
+let divide = document.getElementById("division");
+function division (){
+    problem.textContent+="/";
+};
+divide.addEventListener("click", division);
+
+let multibly = document.getElementById("multibly");
+function multiblication(){
+    problem.textContent+="*";
+};
+multibly.addEventListener("click", multiblication);
+
+let _equal = document.getElementById("evaluate");
+
+
+//below this line all the hard logic take place:_____________________ enjoy;
+function evaluateExpression(expression) {
+    const operators = {
+      '+': (a, b) => a + b,
+      '-': (a, b) => a - b,
+      '*': (a, b) => a * b,
+      '/': (a, b) => a / b,
+    };
+  
+    function shuntingYard(tokens) {
+      const outputQueue = [];
+      const operatorStack = [];
+  
+      for (let token of tokens) {
+        if (!isNaN(token)) {
+          outputQueue.push(parseFloat(token));
+        } else if (token in operators) {
+          while (
+            operatorStack.length &&
+            operators[operatorStack[operatorStack.length - 1]] >= operators[token]
+          ) {
+            outputQueue.push(operatorStack.pop());
+          }
+          operatorStack.push(token);
+        }
+      }
+  
+      while (operatorStack.length) {
+        outputQueue.push(operatorStack.pop());
+      }
+  
+      return outputQueue;
+    }
+  
+    function evaluateRPN(tokens) {
+      const stack = [];
+  
+      for (let token of tokens) {
+        if (!isNaN(token)) {
+          stack.push(token);
+        } else if (token in operators) {
+          const b = stack.pop();
+          const a = stack.pop();
+          stack.push(operators[token](a, b));
+        }
+      }
+  
+      return stack[0];
+    }
+  
+    const expressionTokens = expression
+      .match(/([+\-*/()]|\d+(\.\d+)?)\s*/g)
+      .map(token => token.trim());
+  
+    const postfixTokens = shuntingYard(expressionTokens);
+    const result = evaluateRPN(postfixTokens);
+  
+    return result;
+  }
+function evaluation(){
+    answer.textContent= evaluateExpression(problem.textContent);
+    problem.textContent="";
+}
+_equal.addEventListener("click", evaluation);
